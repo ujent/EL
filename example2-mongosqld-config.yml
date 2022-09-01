@@ -1,0 +1,29 @@
+systemLog:
+  quiet: false
+  logAppend: false
+  path: "/var/log/mongosqld/mongosqld.log"
+  verbosity: 1
+  logRotate: "rename" # "rename"|"reopen"
+security:
+  enabled: true
+#  datasource: "datasource_name"
+mongodb:
+  net:
+    uri: "mongo.myhost.com:27017"
+    auth:
+      username: "mongodb_username"
+      password: "mongodb_password"
+net:
+  bindIp: 0.0.0.0
+  port: 3307
+#  ssl:
+#    mode: "allowSSL"
+#    PEMKeyFile: "/vagrant/certificates/mongosqld-server.pem"
+#    CAFile: "/vagrant/certificates/ca.crt"
+schema:
+  path: "/etc/mongosqld/schema/"
+processManagement:
+  service:
+    name: mongosqld
+    displayName: mongosqld
+    description: "BI Connector SQL proxy server"

@@ -1,0 +1,42 @@
+systemLog:
+  quiet: false
+  logAppend: false
+  path: "/var/log/mongosqld/mongosqld.log"
+  verbosity: 1
+  logRotate: "rename" # "rename"|"reopen"
+security:
+  enabled: true
+  # defaultMechanism: "SCRAM-SHA-1"
+  defaultSource: $external
+  gssapi:
+    hostname: cluster0.spnud.mongodb.net
+    serviceName: mongosql
+mongodb:
+  net:
+    uri: "cluster0-biconnector.spnud.mongodb.net:27015"
+    ssl:
+      enabled: false
+      # enabled: true
+      # allowInvalidHostnames: true
+      # PEMKeyFile: /Users/ruslana/Code/EL/X509-cert-4557831596589561519.pem
+    auth:
+      username: bipp_with_psw
+      password: 7W1iHudDpVklirw6
+      source: sample_guides # This is the name of the database to authenticate against.
+      mechanism: SCRAM-SHA-1
+      gssapiServiceName: mongodb
+net:
+  port: 27015
+  bindIp: 0.0.0.0
+  # port: 3307
+  ssl:
+    mode: "requireSSL"
+    PEMKeyFile: /Users/ruslana/Code/EL/mongo.pem
+#    CAFile: "/vagrant/certificates/ca.crt"
+schema:
+  path: "/etc/mongosqld/schema/"
+processManagement:
+  service:
+    name: mongosql
+    displayName: mongosql
+    description: "BI Connector SQL proxy server"
